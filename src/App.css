@@ -1,0 +1,108 @@
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pairs {
+  height: auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.pairs button {
+  width: auto;
+  height: auto;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.App {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: slateblue;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .links {
+    text-align: center;
+    margin-right: 50px;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 3px solid white;
+    padding-bottom: 2px;
+    margin: 10px;
+}
+
+.navbar .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.user p {
+    font-size: 15px;
+    margin-right: 10px;
+    color: white;
+}
+
+.bet-button {
+    background-color: #28a745; /* green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.bet-button:hover {
+    background-color: #218838; /* darker green on hover */
+}
+
+.team-names {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* subtle border */
+    background-color: #f9f9f9; /* light background */
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .team-names, .odds {
+        margin-bottom: 10px;
+    }
+}
