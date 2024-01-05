@@ -106,3 +106,8 @@ body {
         margin-bottom: 10px;
     }
 }
+
+.input {
+    display: flex;
+    padding: 10px;
+}

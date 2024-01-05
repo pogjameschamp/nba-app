@@ -1,7 +1,7 @@
 
 import { PlayerProps } from './components/PlayerProps';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { db, auth } from "./config/firebase" // Import your Firebase configuration
 import { getDocs, collection, doc, getDoc, setDoc } from 'firebase/firestore'
 
@@ -11,7 +11,11 @@ import { Login } from './components/login';
 import { Navbar } from "./components/navbar"
 import { ActiveBets } from './components/activebets';
 
+export const AppContext = createContext();
 function App() {
+
+  const [bets, setBets] = useState([])
+  const [betAmount, setBetAmount] = useState("")
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -42,14 +46,16 @@ function App() {
 
   return (
     <div className='App'>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element = { <PlayerProps /> }/>
-          <Route path="/login" element = { <Login /> } />
-          <Route path="/active-bets" element = {<ActiveBets />}/>
-        </Routes>
-      </Router>
+      <AppContext.Provider value={{bets, setBets, betAmount, setBetAmount}}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element = { <PlayerProps /> }/>
+            <Route path="/login" element = { <Login /> } />
+            <Route path="/active-bets" element = {<ActiveBets />}/>
+          </Routes>
+        </Router>
+      </AppContext.Provider>
     </div>
   )
 }
