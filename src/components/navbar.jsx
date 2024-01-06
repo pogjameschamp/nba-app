@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from "firebase/auth"
 import { getDocs, collection, doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
+
 export const Navbar = () => {
     const [user] = useAuthState(auth)
     const [fakeCurrencyBalance, setFakeCurrencyBalance] = useState(0);

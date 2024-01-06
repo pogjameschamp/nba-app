@@ -5,7 +5,7 @@ import { AppContext } from '../App';
 
 export const PlayerProps = () => {
     const [gameIds, setGameIds] = useState(null)
-    const {bets, setBets, betAmount, setBetAmount} = useContext(AppContext)
+    const {bets, setBets} = useContext(AppContext)
 
     const apiKey = 'f929cd1a3078c312623a14e5f34252d2'
     const sportKey = 'basketball_nba'
@@ -14,21 +14,13 @@ export const PlayerProps = () => {
     const oddsFormat = 'decimal'
     const dateFormat = 'iso'
 
-    const handleEvent = (event, event2) => {
+    const handleEvent = (event, event2, id) => {
         const bet = {
-            id: 1,
+            id: id,
             bet: event,
             name: event2
         }
         setBets([...bets, bet])
-    }
-
-    const handleChange = (event) => {
-        setBetAmount(event.target.value)
-    }
-    
-    const tester = () => {
-        console.log(bets)
     }
 
     useEffect(() => {
@@ -41,9 +33,7 @@ export const PlayerProps = () => {
                 dateFormat,
             }
         }).then((res) => {
-            console.log(res.data)
             setGameIds(res.data)
-            console.log("This works")
         })
     }, [])
 
@@ -51,6 +41,7 @@ export const PlayerProps = () => {
         <>
         {/* <button onClick={fetchData}> Get Match Odds </button> */}
         <div>
+            {console.log(gameIds)}
             {gameIds?.map((game) => {
                 return (
                     <>
@@ -60,13 +51,9 @@ export const PlayerProps = () => {
                         awayTeam = {game.bookmakers[1]?.markets[0]?.outcomes[1].name}
                         homePrice = {game.bookmakers[1]?.markets[0]?.outcomes[0].price}
                         awayPrice = {game.bookmakers[1]?.markets[0]?.outcomes[1].price}
+                        id = {game.id}
                         handleEvent = {handleEvent}
                     />
-                        {/* <div className='game-container'>
-                            <h1 className='team-names'> {game.commence_time.slice(0, 10)} </h1>
-                            <h1 className='team-names'> {game.bookmakers[1]?.markets[0]?.outcomes[0].name}  <button className='bet-button' onClick={ () => handleEvent(game.bookmakers[1]?.markets[0]?.outcomes[0].price)}>{game.bookmakers[1]?.markets[0]?.outcomes[0].price}</button></h1>
-                            <h1 className='team-names'> {game.bookmakers[1]?.markets[0]?.outcomes[1].name} <button className='bet-button' onClick={ () => handleEvent(game.bookmakers[1]?.markets[0]?.outcomes[1].price)}>{game.bookmakers[1]?.markets[0]?.outcomes[1].price}</button> </h1>
-                        </div> */}
                     </>
                 )
             })}
