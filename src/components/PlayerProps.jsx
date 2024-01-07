@@ -41,7 +41,6 @@ export const PlayerProps = () => {
         <>
         {/* <button onClick={fetchData}> Get Match Odds </button> */}
         <div>
-            {console.log(gameIds)}
             {gameIds?.map((game) => {
                 return (
                     <>

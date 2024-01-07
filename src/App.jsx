@@ -3,7 +3,7 @@ import { PlayerProps } from './components/PlayerProps';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import { useEffect, useState, createContext } from 'react';
 import { db, auth } from "./config/firebase" // Import your Firebase configuration
-import { getDocs, collection, doc, getDoc, setDoc } from 'firebase/firestore'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 
 import { onAuthStateChanged } from 'firebase/auth';
 import './App.css'
