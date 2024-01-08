@@ -67,9 +67,9 @@ export const MultiBetSlip = () => {
         {bets.length != 0 && (
             <div>
                 {bets.length != 0 && <h2>Multi Bet Slip</h2>}
-                {bets.map((bet) => {
+                {bets.map((bet, index) => {
                     return (
-                        <p>{bet.name} - Odds: {bet.bet}  </p>
+                        <p key={bet.id}>{bet.name} - Odds: {bet.bet}  </p>
                     )
                 })}
                 <p>Total Combined Odds: {totalOdds.toFixed(2)}</p>

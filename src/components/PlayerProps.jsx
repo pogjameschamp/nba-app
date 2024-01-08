@@ -33,6 +33,7 @@ export const PlayerProps = () => {
                 dateFormat,
             }
         }).then((res) => {
+            // console.log(res.data)
             setGameIds(res.data)
         })
     }, [])
@@ -45,6 +46,7 @@ export const PlayerProps = () => {
                 return (
                     <>
                     <Bet 
+                        key = {game.id}
                         gameTime = {game.commence_time.slice(0, 10)}
                         homeTeam = {game.bookmakers[1]?.markets[0]?.outcomes[0].name}
                         awayTeam = {game.bookmakers[1]?.markets[0]?.outcomes[1].name}
